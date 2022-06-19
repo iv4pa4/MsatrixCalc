@@ -44,8 +44,7 @@ void swap(double *xp, double *yp) {
     *yp = temp;
 }
 
-double** findInverse(int size, double matrix[size][size]) {
-    double res[size][size];
+void findInverse(int size, double matrix[size][size], double res[size][size]) {
     //MoM
     findMoM(size, matrix, res);
     //MoC
