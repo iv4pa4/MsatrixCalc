@@ -64,12 +64,10 @@ void findInverse(int size, double matrix[size][size], double res[size][size]) {
         }
     }
     //A-1
-    double d = findDeterminant(size, size, res);
+    double d = findDeterminant(size, matrix);
     for(int c = 0; c < size; c++) {
         for(int r = 0; r < size; r++) {
-            if(c > r) {
-                res[c][r] *= d;
-            }
+            res[c][r] /= d;
         }
     }
 }
