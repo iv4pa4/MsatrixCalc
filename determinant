@@ -1,0 +1,34 @@
+double findDeterminant(int n, double matrix[n][n]) {
+    if(n == 2) {
+        return matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0];
+    }
+    if(n == 3) {
+        double c[3];
+        double res;
+        for(int i = 0; i < 3; i++) {
+            double temp[2][2];
+            findSmallerMatrix(i, 0, 3, matrix, temp);
+            c[i] = findDeterminant(2, temp);
+            if(i == 1) {
+                c[i] *= -1;
+            }
+            res += matrix[i][0]*c[i];
+        }
+        return res;
+    }
+    if(n == 4) {
+        double c[4];
+        double res;
+        for(int i = 0; i < 4; i++) {
+            double temp[3][3];
+            findSmallerMatrix(i, 0, 4, matrix, temp);
+            c[i] = findDeterminant(3, temp);
+            if(i % 2) {
+                c[i] *= -1;
+            }
+            res += matrix[i][0]*c[i];
+            printf("\n"); //lol
+        }
+        return res;
+    }
+}
